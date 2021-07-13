@@ -1,9 +1,20 @@
-const db = require("../models");
+const db = require("../models/workout");
 const router = require("express").Router();
 
 // Get all workouts
 
 router.get("/api/workouts", (req, res) => {
+  db.find()
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+//GET in range
+router.get("/api/workouts/range", (req, res) => {
   db.find()
     .then((dbData) => {
       res.json(dbData);
